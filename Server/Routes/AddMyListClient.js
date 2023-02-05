@@ -9,11 +9,13 @@ let {error}=vaidateClientList(req.body);
 if(error)
     return res.send(error.details[0].message).status(400)
     try{
-        let list= await ClientLists.find({email:req.body.email})
-
-        return res.send(list)
-        let todo= await List.find({email:req.body.email,listName:req.body.listName});
-        //let list= ClientLists.updateOne({email:req.body.email},{content:[todo]})
+        let myList= await ClientLists.find({email:req.body.email})
+        if(myList.length==0){
+           let list=new ClientLists({email:req.body.email,content:[req.body.listId]})
+           list= await list.save()
+           return res.send(list)
+        }
+        let list= await ClientLists.updateOne({email:req.body.email},{content:[...myList.content,req.body.listId]});
         list=await list.save();
     }
     catch(error){
