@@ -6,7 +6,7 @@ const ClientLists = mongoose.model('clientLists', new mongoose.Schema({
     
     content:{
         type: [mongoose.Schema.Types.ObjectId],
-        ref:'List',
+        ref:'list',
     },
     email:{
         type: String,
@@ -20,7 +20,7 @@ const ClientLists = mongoose.model('clientLists', new mongoose.Schema({
 function vaidateClientList(value){
     const schema=Joi.object({
         email:Joi.string().required().email(), 
-        Content:Joi.string(), 
+        content:Joi.string(), 
     });
     return schema.validate(value)
 };

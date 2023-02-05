@@ -11,7 +11,7 @@ if(error)
     try{
         let todo= await Todo.find({email:req.body.email,listName:req.body.listName});
         todo= todo.map(ev=>ev=ev._id)
-        let list=new List({email:req.body.email,listName:req.body.listName,content:todo})
+        let list=new List({email:req.body.email,listName:req.body.listName,companyName:req.body.companyName,content:todo})
         list=await list.save();
         return res.send(list)
     }

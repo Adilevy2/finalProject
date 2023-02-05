@@ -6,6 +6,7 @@ const deleteTodo=require('./routes/DeleteTodo');
 const updateTodo=require('./routes/UpdateTodo');
 const myListClient=require('./routes/MyListClient');
 const addMyListClient=require('./routes/AddMyListClient');
+const updateMyListClient=require('./routes/UpdateMyListClient');
 const addList=require('./Routes/AddList');
 const getList=require('./Routes/GetList');
 const deleteList=require('./Routes/DeleteList');
@@ -36,6 +37,7 @@ app.use('/api/getList',getList)
 app.use('/api/deleteList',deleteList)
 app.use('/api/myListClient',myListClient)
 app.use('/api/addMyListClient',addMyListClient)
+app.use('/api/updateMyListClient',updateMyListClient)
 
   const port = process.env.PORT || 4000; 
 

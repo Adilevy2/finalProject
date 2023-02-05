@@ -16,6 +16,10 @@ const List = mongoose.model('list', new mongoose.Schema({
         type: String,
         required : true
             
+        },
+        companyName:{
+            type: String,
+            required : true
         }
     }
 ) ) 
@@ -24,8 +28,9 @@ const List = mongoose.model('list', new mongoose.Schema({
 function vaidateList(user){
     const schema=Joi.object({
         listName:Joi.string().required(),
+        companyName:Joi.string().required(),
         email:Joi.string().required().email(), 
-        Content:Joi.string(), 
+        content:Joi.string(), 
     });
     return schema.validate(user)
 };
