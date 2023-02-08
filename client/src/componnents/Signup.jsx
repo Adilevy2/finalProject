@@ -21,6 +21,8 @@ const handleSubmit=async(e)=>{
     try{
         e.preventDefault()
         formik.values.isCompany=isCompany;
+        if(isCompany==null)
+        setMessage(<p className="font-medium text-red-500 hover:text-red-600">Choose the account status</p>)
         const submit=await axios.post('http://localhost:4000/api/signUp',formik.values)
         if(submit.data=='email exist')
         setMessage(<p className="font-medium text-red-500 hover:text-red-600">email exist</p>)
@@ -33,7 +35,6 @@ const handleSubmit=async(e)=>{
         alert('oops,somthing went wrong')
     }
 }
-console.log(formik.values.isCompany);
     return ( 
         <div>
             <div className="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">

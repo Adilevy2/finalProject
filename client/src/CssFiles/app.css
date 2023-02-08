@@ -1,0 +1,10 @@
+.show2 {
+    display: none;
+    overflow: hidden;
+  }
+  .showhim:hover .show2{
+    display: block;
+  }
+  .showhim:hover .show1{
+    display: none;
+  }

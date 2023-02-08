@@ -3,19 +3,25 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import NavBar from './componnents/NavBar';
 import Login from './componnents/Login';
 import AppContext from './context/Context';
 import SignUp from './componnents/Signup';
+import AccountArea from './componnents/AccountArea';
+import SideBar from './componnents/SideBar';
+import MyLists from './componnents/MyLists';
+import Navbar from './componnents/NavBar';
+import MainPage from './componnents/MainPage';
+import Routing from './componnents/Routing';
+import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <BrowserRouter>
     <AppContext>
 
-    <Login />
+    <Routing/>
     </AppContext>
-  </React.StrictMode>
+  </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function

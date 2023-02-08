@@ -1,0 +1,229 @@
+
+  /* BASIC SETUP */
+  
+  .page-wrapper {
+    width: 100%;
+    height: auto;
+ }
+  
+  .nav-wrapper {
+    width: 100%;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+  }
+  
+  .grad-bar {
+    width: 100%;
+    height: 0.5rem;
+    background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+    background-size: 400% 400%;
+        -webkit-animation: gradbar 15s ease infinite;
+      -moz-animation: gradbar 15s ease infinite;
+      animation: gradbar 15s ease infinite;
+  }
+  
+  /* NAVIGATION */
+  
+  .navbar {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    align-items: center;
+    height: auto;
+    overflow: hidden;
+  }
+  
+  .navbar img {
+    justify-self: start;
+    transition-duration: 0.6s;
+    
+  }
+
+  .navbar img:hover{
+    transform: scale(1.2);
+  }
+  
+  .navbar ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    justify-self: end;
+    justify-content: end;
+    
+  }
+  
+  .nav-item a {
+    color: #000;
+    font-size: 1rem;
+    font-weight: 400;
+    text-decoration: none;
+    transition: color 0.3s ease-out;
+  }
+  
+  .nav-item a:hover {
+    color: rgb(63, 114, 175);
+  }
+  
+  .features {
+    width: 100%;
+    height: auto;
+    background-color: #d1d0d0;
+    display: flex;
+    padding: 3.125rem 1.25rem;
+    justify-content: space-around;
+  }
+  
+  .feature-container {
+    flex-basis: 30%;
+    margin-top: 0.625rem;
+  }
+  
+  .feature-container p {
+    color: #000;
+    text-align: center;
+    line-height: 1.4;
+  }
+  
+  .feature-container img {
+    width: 100%;
+  }
+  
+  /* MOBILE MENU & ANIMATION */
+  
+  .menu-toggle .bar{
+    width: 1.563rem;
+    height:0.188rem;
+    background-color: #3f3f3f;
+    margin: 0.313rem auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .menu-toggle {
+    justify-self: end;
+    margin-right: 1.563rem;
+    display: none;
+  }
+  
+  .menu-toggle:hover{
+    cursor: pointer;
+  }
+  
+  #mobile-menu.is-active .bar:nth-child(2){
+    opacity: 0;
+  }
+  
+  #mobile-menu.is-active .bar:nth-child(1){
+    -webkit-transform: translateY(0.5rem) rotate(45deg);
+    -ms-transform: translateY(0.5rem) rotate(45deg);
+    -o-transform: translateY(0.5rem) rotate(45deg);
+    transform: translateY(0.5rem) rotate(45deg);
+  }
+  
+  #mobile-menu.is-active .bar:nth-child(3){
+    -webkit-transform: translateY(-0.5rem) rotate(-45deg);
+    -ms-transform: translateY(-0.5rem) rotate(-45deg);
+    -o-transform: translateY(-0.5rem) rotate(-45deg);
+    transform: translateY(-0.5rem) rotate(-45deg);
+  }
+  
+  /* KEYFRAME ANIMATIONS */
+  
+  @-webkit-keyframes gradbar {
+      0% {
+          background-position: 0% 50%
+      }
+      50% {
+          background-position: 100% 50%
+      }
+      100% {
+          background-position: 0% 50%
+      }
+  }
+  
+  @-moz-keyframes gradbar {
+      0% {
+          background-position: 0% 50%
+      }
+      50% {
+          background-position: 100% 50%
+      }
+      100% {
+          background-position: 0% 50%
+      }
+  }
+  
+  @keyframes gradbar {
+      0% {
+          background-position: 0% 50%
+      }
+      50% {
+          background-position: 100% 50%
+      }
+      100% {
+          background-position: 0% 50%
+      }
+  }
+  
+  /* Media Queries */
+  
+    /* Mobile Devices - Phones/Tablets */
+  
+  @media only screen and (max-width: 45rem) { 
+    .features {
+      flex-direction: column;
+      padding: 3.125rem;
+    }
+       
+    .navbar ul {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      justify-content: end;
+      top: 3.438rem;
+      background-color: rgb(168, 166, 166);
+      width: 100%;
+      height: calc(100vh - 3.438rem);
+      transform: translate(-101%);
+      text-align: center;
+      overflow: hidden;
+    }
+    
+    .navbar li {
+      padding: 0.938rem;
+
+    }
+    
+    .navbar li:first-child {
+      margin-top:3.125rem;
+    }
+    
+    .navbar li a {
+      font-size: 1rem;
+    }
+     
+    .menu-toggle, .bar {
+      display: block;
+      cursor: pointer;
+    }
+    
+    .mobile-nav {
+    transform: translate(0%)!important;
+  }
+    
+    /* SECTIONS */
+    
+    .headline {
+      height: 20vh;
+    }
+    
+    .feature-container {
+      margin-top: 1.25rem;
+    }
+    
+    .feature-container:nth-child(2) {
+      order: -1;
+    }
+    
+  }
