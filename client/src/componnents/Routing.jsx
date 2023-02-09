@@ -16,6 +16,7 @@ const Routing = () => {
                 <Route path='/myLists' element={<MyLists/>}></Route>
                 <Route path='/contactUs' element={<ContactUs/>}></Route>
             </Routes>
+            <Footer/>
         </div>
     );
 }

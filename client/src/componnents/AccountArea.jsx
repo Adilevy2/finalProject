@@ -5,13 +5,15 @@ import { useNavigate } from 'react-router-dom';
 
 const AccountArea = () => {
     const navigate=useNavigate()
-    let decode={name:''};
+    let decode={};
     useEffect(() => {
         function getToken(){
-            if(!localStorage.getItem('token'))
-                 navigate('/')
-             decode=jwtDecode(localStorage.getItem('token'))
-             console.log(localStorage.getItem('token'));
+            if(localStorage.getItem('token')){
+                 decode=jwtDecode(localStorage.getItem('token'))
+            }
+            else{
+                navigate('/')
+            }
     }
     getToken()
     }, []);

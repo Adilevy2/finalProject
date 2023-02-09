@@ -4,9 +4,9 @@ const {vaidateList,List} = require('../Models/List')
 const Todo = require('../Models/Todo')
 
 
-router.delete('/', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
-      const id = req.body.id;
+      const id = req.params.id;
       const list = await List.findByIdAndRemove(id);
       const email=list.email;
       const listName=list.listName;

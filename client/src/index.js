@@ -11,9 +11,9 @@ import SideBar from './componnents/SideBar';
 import MyLists from './componnents/MyLists';
 import Navbar from './componnents/NavBar';
 import MainPage from './componnents/MainPage';
+import Form from './componnents/Form';
 import Routing from './componnents/Routing';
 import { BrowserRouter } from 'react-router-dom';
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
