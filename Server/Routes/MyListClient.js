@@ -1,12 +1,25 @@
 const express = require('express')
-const {ClientLists} = require('../Models/ClientLists')
+const {ClientLists} = require('../Models/ClientLists') 
+const {List}=require('../Models/List')
 const router = express.Router()
 
 router.post('/',async (req, res)=>{
-    const list= await ClientLists.find({email:req.body.email});
-    if(list.length==0)
+    try{
+
+        const list= await ClientLists.find({email:req.body.email});
+        if(list.length==0)
        return res.status(400).send('you have no lists')
-    return res.send(list)
+       const listsId=list[0].content;
+       let arr=[];
+       for(let i=0;i<listsId.length;i++){
+           let result=await List.findById(listsId[i]).populate('content')
+           arr=[...arr,result]
+        }
+        return res.send(arr)
+    }
+    catch(error){
+        res.sendStatus(error)
+    }
 });
 
 

@@ -7,6 +7,7 @@ const updateTodo=require('./routes/UpdateTodo');
 const myListClient=require('./routes/MyListClient');
 const addMyListClient=require('./routes/AddMyListClient');
 const updateMyListClient=require('./routes/UpdateMyListClient');
+const changePassword=require('./routes/ChangePassword');
 const addList=require('./Routes/AddList');
 const getList=require('./Routes/GetList');
 const deleteList=require('./Routes/DeleteList');
@@ -35,6 +36,7 @@ app.use('/api/updateTodo',updateTodo)
 app.use('/api/addList',addList)
 app.use('/api/getList',getList)
 app.use('/api/deleteList',deleteList)
+app.use('/api/changePassword',changePassword)
 app.use('/api/myListClient',myListClient)
 app.use('/api/addMyListClient',addMyListClient)
 app.use('/api/updateMyListClient',updateMyListClient)

@@ -1,13 +1,15 @@
 import { AllContext } from '../context/Context';
 import React, { useContext } from "react";
+import jwtDecode from "jwt-decode";
 import axios from 'axios';
 
-const AreYouSureDeleteTodo= () => {
-    const {areYouSureDeleteTodo,setAreYouSureDeleteTodo,todoId}=useContext(AllContext)
+const AreYouSureDeleteMyLists= () => {
+    const {setAreYouSureDeleteMyLists,listId}=useContext(AllContext)
     const handleDelete= async()=>{
         try{
-            const submit=await axios.delete(`http://localhost:4000/api/deleteTodo/${todoId}`)
-            setAreYouSureDeleteTodo(false)
+            const decode=jwtDecode(localStorage.getItem('token'))
+            const submit=await axios.post(`http://localhost:4000/api/updateMyListClient`,{email:decode.email,id:listId})
+            setAreYouSureDeleteMyLists(false)
             window.location.reload(false);
         }
         catch{
@@ -33,14 +35,14 @@ const AreYouSureDeleteTodo= () => {
             <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
               <h3 className="text-lg font-medium leading-6 text-gray-900" id="modal-title"></h3>
               <div className="mt-2">
-                <p className="text-sm text-gray-500">are you sure you want to delete this task?</p>
+                <p className="text-sm text-gray-500">are you sure you want to delete this list from your personal area?</p>
               </div>
             </div>
           </div>
         </div>
         <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
           <button onClick={()=>handleDelete()} type="button" className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">yes</button>
-          <button onClick={()=>setAreYouSureDeleteTodo(false)} type="button" className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
+          <button onClick={()=>setAreYouSureDeleteMyLists(false)} type="button" className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
         </div>
       </div>
     </div>
@@ -50,4 +52,4 @@ const AreYouSureDeleteTodo= () => {
      );
 }
  
-export default AreYouSureDeleteTodo ;
+export default AreYouSureDeleteMyLists ;

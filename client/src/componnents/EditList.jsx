@@ -50,7 +50,6 @@ const saveChanges=async()=>{
     setEditList(false)
     window.location.reload(false);
 }
-console.log(listName);
     return ( 
         <div>
             <div className="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">

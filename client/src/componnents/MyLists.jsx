@@ -39,12 +39,14 @@ const MyLists = () => {
         setTodoId(value)
       }
     const editAllList=(listId,listName)=>{
+        console.log(listId);
+        console.log(listName);
         setEditList(true)
         setListId(listId);    
         setListName(listName);    
      }
     return (
-        <div style={{minHeight: '32.5rem'}} className='bg-slate-100'>
+        <div style={{minHeight: '34rem'}} className='bg-slate-100'>
             {areYouSureDeleteTodo &&
             <AreYouSureDeleteTodo/>
             }
@@ -55,7 +57,7 @@ const MyLists = () => {
                 <EditList/>
             }
 
-              <div className='fixed'>
+              <div className='absolute'>
             <SideBar/>
             </div>
         <div className='grid place-items-center '>
@@ -87,7 +89,7 @@ const MyLists = () => {
                         <div className='col-start-2 col-span-4'>
                             <p className='sr-only' id='idList'>{ev._id}</p>
                             <p className='sr-only' id='listName'>{ev.listName}</p>
-                <button onClick={()=>editAllList(document.getElementById('idList').innerText,document.getElementById('listName').innerText)} className=" order-last mt-12 ml-4 whitespace-nowrap rounded-md border border-transparent bg-cyan-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-cyan-700">Edit</button>
+                <button onClick={()=>editAllList(document.activeElement.previousSibling.previousSibling.innerText,document.activeElement.previousSibling.innerText)} className=" order-last mt-12 ml-4 whitespace-nowrap rounded-md border border-transparent bg-cyan-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-cyan-700">Edit</button>
                         </div>
                         <div className='col-start-9 col-span-11'>
                 <button className=" order-last mt-12 ml-4 whitespace-nowrap rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700">Generate QR</button>

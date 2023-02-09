@@ -1,17 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Login from './componnents/Login';
 import AppContext from './context/Context';
-import SignUp from './componnents/Signup';
-import AccountArea from './componnents/AccountArea';
-import SideBar from './componnents/SideBar';
-import MyLists from './componnents/MyLists';
-import Navbar from './componnents/NavBar';
-import MainPage from './componnents/MainPage';
-import Form from './componnents/Form';
+
 import Routing from './componnents/Routing';
 import { BrowserRouter } from 'react-router-dom';
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -18,7 +18,7 @@ const AccountArea = () => {
     getToken()
     }, []);
     return (
-        <div style={{minHeight: '32.5rem'}} className='bg-slate-100'>
+        <div style={{minHeight: '34rem'}} className='bg-slate-100'>
             <div className='absolute'>
             <SideBar></SideBar>
             </div>
