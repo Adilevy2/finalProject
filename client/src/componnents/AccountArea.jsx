@@ -51,7 +51,7 @@ const AccountArea = () => {
             <SideBar></SideBar>
             </div>
             <div style={{right:'0'}} className='fixed'>
-            <img src={QR} className="QR" />
+            <img style={{width:'20rem',}} src={QR} className="QR mt-8" />
             </div>
             <h1 className=' text-center text-4xl font-bold'>Your Details : </h1>
             <div className='ml-80'>

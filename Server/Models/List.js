@@ -38,11 +38,7 @@ const List = mongoose.model('list', new mongoose.Schema({
             type: String,
             required : true
         },
-        public:{
-            type: Boolean,
-            required : true
-        }
-
+      
     }
 ) ) 
 
@@ -57,7 +53,6 @@ function vaidateList(user){
         listFontSize:Joi.string().required(), 
         listFontColor:Joi.string().required(), 
         listFont:Joi.string().required(), 
-        public:Joi.boolean().required(), 
     });
     return schema.validate(user)
 };
