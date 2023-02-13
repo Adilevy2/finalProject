@@ -25,8 +25,7 @@ const MyAddedLists = () => {
            }
 
                const submit=await axios.post('https://qrcontrol-server.onrender.com/api/myListClient',{email:decode.email})
-               console.log(submit.data)
-               if(submit.data.length>1)
+               if(submit.data.length==1 && submit.data[0]==null)
                setData(submit.data)
             }
             catch{

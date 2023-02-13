@@ -53,18 +53,18 @@ const AccountArea = () => {
             <div style={{right:'0'}} className='fixed'>
             <img style={{width:'20rem',}} src={QR} className="QR mt-8" />
             </div>
-            <h1 className=' text-center text-4xl font-bold'>Your Details : </h1>
+            <h1 className=' text-center text-4xl '>Your Details : </h1>
             <div className='ml-80'>
-                <h1 className='mt-8 text-xl font-bold'> Name : <span className='ml-12'>{name}</span></h1>
-                <h1 className='mt-8 text-xl font-bold'> Email : <span className='ml-12'>{email}</span></h1>
+                <h1 className='mt-8 text-xl '> Name : <span className='ml-12'>{name}</span></h1>
+                <h1 className='mt-8 text-xl '> Email : <span className='ml-12'>{email}</span></h1>
                 {
                     adress &&
-                <h1 className='mt-8 text-xl font-bold'> Adress : <span className='ml-12'>{adress}
+                <h1 className='mt-8 text-xl '> Adress : <span className='ml-12'>{adress}
                 <button onClick={()=>setChangeAdress(true)}  className="ml-8 order-last whitespace-nowrap rounded-md border border-transparent bg-rose-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-rose-600"> Change</button>
                 </span></h1>
                 } {
                     phoneNumber &&
-                <h1 className='mt-8 text-xl font-bold'> Phone Number : <span className='ml-12'>{phoneNumber}
+                <h1 className='mt-8 text-xl '> Phone Number : <span className='ml-12'>{phoneNumber}
                 <button onClick={()=>setChangePhoneNumber(true)}  className="ml-8 order-last whitespace-nowrap rounded-md border border-transparent bg-rose-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-rose-600"> Change</button>
                 </span></h1>
                 }
