@@ -12,7 +12,7 @@ const CompanyLists= () => {
 
     useEffect(() => {
         async function getData(){
-        const submit=await axios.post('http://localhost:4000/api/getList',{email:companyEmail})
+        const submit=await axios.post('https://qrcontrol-server.onrender.com/api/getList',{email:companyEmail})
         if(localStorage.getItem('token')){
             decode=jwtDecode(localStorage.getItem('token'))
             setEmail(decode.email)

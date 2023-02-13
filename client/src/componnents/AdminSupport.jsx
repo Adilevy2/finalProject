@@ -34,7 +34,7 @@ const AdminSupport = () => {
       {email!=='adi@gmail.com'?<h1 className="text-center text-4xl font-bold text-red-500">Hi,youre not the admin</h1>:<div>
       <h1 className="text-center text-4xl font-bold">Hello admin</h1>
       {contact.length==0?<h1 className="text-center text-4xl font-bold mt-24 text-red-500">there is currentlly no Support calls</h1>:<div>
-      <p className="text-center text-4xl">Contact</p>
+      <p className="text-center text-4xl">Support</p>
       <p className="text-center text-2xl">All the users that send a message</p>
       <div className=" flex w-full">
         <table className="border-collapse border-slate-400 m-4 w-full ">
