@@ -47,7 +47,7 @@ const MyLists = () => {
 
     }
     const handleGenerageQr=(val)=>{
-        const url=`https://imaginative-conkies-9422c1.netlify.app/list/${val}`
+        const url=`https://imaginative-conkies-9422c1.netlify.app`
         setUrl(url);
         console.log(url)
         setQrGenerate(true)
