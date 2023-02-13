@@ -47,7 +47,7 @@ const MyLists = () => {
 
     }
     const handleGenerageQr=(val)=>{
-        const url=`https://qrcontrol-server.onrender.com/list/${val}`
+        const url=`https://lustrous-zabaione-50a7bd.netlify.app/list/${val}`
         setUrl(url);
         setQrGenerate(true)
     }
