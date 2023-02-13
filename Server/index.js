@@ -24,7 +24,7 @@ const cors=require('cors');
 
 
 
-mongoose.connect('mongodb://127.0.0.1:27017/FinalProject')
+mongoose.connect('mongodb+srv://aharon_karsenti:220519958523AykA@cluster0.bsuztbw.mongodb.net/test')
 .then(()=>console.log('connected to data base'))
 .catch(()=>console.log('couldnt connect to data base '));
 
