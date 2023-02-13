@@ -24,11 +24,11 @@ const SideBar = () => {
     getToken()
     }, []);   
      return (
-        <div>
+        <div >
            
              <body class="flex items-start space-x-6 ">
 
-<div class="flex flex-col items-center w-36 h-full overflow-hidden text-gray-400 bg-gray-900 rounded">
+<div class="flex flex-col items-center h-full overflow-hidden text-gray-400 bg-gray-900 rounded">
    
 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 mt-6 ">
   <path stroke-linecap="round" sttjoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -59,23 +59,9 @@ const SideBar = () => {
         </svg>My added lists
         </span>
         </Link>
-        <span class="flex items-center justify-center w-36 h-16 mt-2 rounded hover:bg-gray-700 hover:text-gray-300" href="#">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" />
-        </svg>Payment
-        </span>
+        
     </div>
-    <div class="flex flex-col items-center mt-2 border-t border-gray-700">
-        <div class="flex items-center justify-center w-12 h-4 mt-8 rounded " href="#">
-           <p>{decode.name}</p>
-        </div>
-        <div class="flex items-center justify-center w-12 h-4 mt-2 rounded " href="#">
-           <p>{decode.email}</p>
-        </div>
-       
-        <a class="relative flex items-center justify-center w-12 h-12 mt-2 rounded hover:bg-gray-700 hover:text-gray-300" href="#">
-        </a>
-    </div>
+    
     
 </div>
 </body>

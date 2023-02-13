@@ -1,114 +1,100 @@
-import React, { useState } from "react";
-import axios from "axios";
-import jwtDecode  from "jwt-decode";
+import {useFormik} from 'formik'
+import { useContext,useState } from 'react';
+import { AllContext } from '../context/Context';
+import jwtDecode from 'jwt-decode';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 
-const ChangePasswordForm =  () => {
-    const navigate=useNavigate()
+const ChangePassword = () => { 
+    const formik=useFormik({
+    initialValues:{
+        email:'',
+        prevPass:'',
+        password:''
+    }
+});  
+let decode={};
+const [message,setMessage] = useState();
+const [email,setEmail] = useState();
+const {setChangePassword}=useContext(AllContext)
+const navigate=useNavigate
+const handleSubmit=async(e)=>{
     try{
-
-        const decode=jwtDecode(localStorage.getItem('token'))
+        e.preventDefault()
+        if(localStorage.getItem('token')){
+          decode=jwtDecode(localStorage.getItem('token'))
+          setEmail(decode.email)
+        }
+        let values=formik.values;
+        values['email']=email;
+        const submit=await axios.put('http://localhost:4000/api/changePassword',values)
+        if(submit.data=='invalid password')
+        return setMessage(<p className="font-medium text-red-500 hover:text-red-600">invalid  password</p>)
+        else{
+          setChangePassword(false)
+        }
     }
     catch{
-        navigate('/')
+        alert('oops,somthing went wrong')
     }
+}
+    return ( 
+        <div>
+            <div className="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+ 
+  <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
 
-  const [currentPassword, setCurrentPassword] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    if (currentPassword === "") {
-      alert("Current password is required");
-      return;
-    }
-
-    if (newPassword === "") {
-      alert("New password is required");
-      return;
-    }
-
-    if (confirmPassword === "") {
-      alert("Confirm password is required");
-      return;
-    }
-
-    if (newPassword != confirmPassword) {
-        
-      alert("New password and confirm password do not match");
-      return;
-    }
-
-      const submit= await axios.put('http://localhost:4000/api/ChangePassword',{password:newPassword,email:decode.email,prevPass:currentPassword});
-      console.log(submit.data)
- if(submit.data == "invalid password")
- alert("current password is invalid")
- else{
-    alert("Password updated successfully")
-
- }
-
-    // code to submit the form (e.g. make an API call)
-  };
-
-  return (
-    <form onSubmit={handleSubmit} style={{width:'20%',height:'10%',marginLeft:"73%",border:"solid",borderRadius:'7%',backgroundColor:"#DBE0EF"}}>
-                  <label class="block font-extrabold text-center text-blue-400 mb-2" for="current-password">
-      Change Password:
-    </label>
-      <div className="mb-4">
-      <label class=" ml-3 block font-bold mb-2" for="current-password">
-          Current Password:
-        </label>
-        <input
-      class="w-fit ml-3 border border-gray-400 p-2 rounded-full"
-      type="password"
-          id="current-password"
-          name="current-password"
-          required
-          value={currentPassword}
-          onChange={(event) => setCurrentPassword(event.target.value)}
-        />
+  <div className="fixed inset-0 z-10 overflow-y-auto">
+    <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+    
+      <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+        <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+          <div className="sm:flex sm:items-start items-center justify-center">
+          
+  <div className="w-full max-w-md space-y-8 ">
+    <div >
+        <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900 font-sans">Change Password</h2>
+    </div>
+    <form className="mt-8 space-y-6" action="#" onSubmit={(ev)=>handleSubmit(ev)}>
+      <input type="hidden" name="remember" value="true"/>
+      <div className="-space-y-px rounded-md shadow-sm">
+        <div>
+          <input  onChange={formik.handleChange}  name="prevPass" type="password" autocomplete="prevPass" required className="relative block w-full  rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder="Previous Password"/>
+        </div>
+        <div>
+          <input onChange={formik.handleChange} name="password" type="password" autocomplete="password" required className="relative block w-full mt-4 rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder="New password"/>
+        </div>
       </div>
 
-      <div className="mb-4">
-      <label class=" ml-3 block font-bold mb-2" for="new-password">
-          New Password:
-        </label>
-        <input
-      class="w-fit ml-3 border border-gray-400 p-2 rounded-full"
-      type="password"
-          id="new-password"
-          name="new-password"
-          required
-          value={newPassword}
-          onChange={(event) => setNewPassword(event.target.value)}
-        />
+      <div className="flex items-center justify-between">
+       
+            {message}
+       
       </div>
 
-      <div className="mb-4">
-      <label class="ml-3 block font-bold mb-2" for="confirm-password">
-          Confirm Password:
-        </label>
-        <input
-      class="w-fit ml-3 border border-gray-400 p-2 rounded-full"
-      type="password"
-          id="confirm-password"
-          name="confirm-password"
-          required
-          value={confirmPassword}
-          onChange={(event) => setConfirmPassword(event.target.value)}
-        />
+      <div className='grid'>
+        <button type="submit" className="group relative flex w-full justify-center rounded-md border border-transparent bg-blue-600 py-2 px-4 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+          <span className="absolute inset-y-0 left-0 flex items-center pl-3 ">
+            <svg className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clip-rule="evenodd" />
+            </svg>
+          </span>Change
+        </button>
       </div>
-
-      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 ml-14 px-4 rounded ">
-        Change Password
-      </button>
     </form>
-  );
-};
-
-export default ChangePasswordForm;
+  </div>
+          </div>
+        </div>
+        <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+          <button onClick={()=>setChangePassword(false)}  type="button" className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
+     );
+}
+ 
+export default ChangePassword;

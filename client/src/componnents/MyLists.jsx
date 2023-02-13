@@ -10,11 +10,13 @@ import { useContext } from 'react';
 import { AllContext } from './../context/Context';
 import EditTodo from './EditTodo';
 import EditList from './EditList';
+import { QRCodeSVG } from 'qrcode.react';
+import QrGenerate from './QrGenerate';
 
 const MyLists = () => {
     let decode={}
     const navigate=useNavigate()   
-    const {areYouSureDeleteTodo,setAreYouSureDeleteTodo,listName,setListName,setTodoId,editTask,setEditTask,editList,setEditList,listId,setListId}=useContext(AllContext)
+    const {qrGenerate,setQrGenerate,areYouSureDeleteTodo,setAreYouSureDeleteTodo,setUrl,setListName,setTodoId,editTask,setEditTask,editList,setEditList,listId,setListId}=useContext(AllContext)
      const [data, setData] = useState([]);
     useEffect(() => {
         async function getData(){
@@ -37,14 +39,18 @@ const MyLists = () => {
     const editTodo=(value)=>{
         setEditTask(true)
         setTodoId(value)
-      }
+    }
     const editAllList=(listId,listName)=>{
-        console.log(listId);
-        console.log(listName);
         setEditList(true)
         setListId(listId);    
         setListName(listName);    
-     }
+
+    }
+    const handleGenerageQr=(val)=>{
+        const url=`http://localhost:3000/list/${val}`
+        setUrl(url);
+        setQrGenerate(true)
+    }
     return (
         <div style={{minHeight: '34rem'}} className='bg-slate-100'>
             {areYouSureDeleteTodo &&
@@ -56,20 +62,24 @@ const MyLists = () => {
             {editList&&
                 <EditList/>
             }
+            {
+                qrGenerate &&
+                <QrGenerate/>
+            }
 
-              <div className='absolute'>
+              <div className='fixed'>
             <SideBar/>
             </div>
         <div className='grid place-items-center '>
             <h1 className='text-center text-4xl font-bold mt-6'>My Lists</h1>
             
-            {data.length==0?<h1 className='text-center text-4xl font-bold mt-24 text-red-500'>You dont have any lists yet</h1>:data.map(ev=>ev=<div className=' mt-8 bg-slate-200 w-5/12  rounded-md border border-2 border-gray-400 drop-shadow-xl hover:drop-shadow-2xl hover:border-blue-800'>
+            {data.length==0?<h1 className='text-center text-4xl font-bold mt-24 text-red-500'>You dont have any lists yet</h1>:data.map(ev=>ev=<div style={{backgroundColor:`${ev.listBackgroundColor}`}} className=' mt-8 mb-6  w-5/12 rounded-md border border-2 border-gray-400 drop-shadow-xl hover:drop-shadow-2xl hover:border-blue-800'>
                 <h1 className='text-center text-2xl font-bold mt-6'>{ev.companyName}</h1>
-                <h1 className='text-center text-xl font-bold mt-8 underline underline-offset-1'>{ev.listName}</h1>
+                <h1 style={{fontFamily:`${ev.listFont}`}} className='text-center text-xl font-bold mt-8 underline underline-offset-1'>{ev.listName}</h1>
                 <div className='mt-8'>
-                {ev.content.map(e=><div className='hover:text-red-600 showhim grid '>
+                {ev.content.map(e=><div style={{fontFamily:`${ev.listFont}`,fontSize:`${ev.listFontSize} ` }} className='hover:text-red-600 showhim grid '>
                 <div className='show1 ml-8'>
-                <span class="flex items-center mt-2 font-bold " >{e.body}
+                <span style={{color:`${ev.listFontColor}`}} class="flex items-center mt-2 font-bold " >{e.body}
                 </span>
                 </div>
                 <div className='show2 ml-8'>
@@ -92,7 +102,8 @@ const MyLists = () => {
                 <button onClick={()=>editAllList(document.activeElement.previousSibling.previousSibling.innerText,document.activeElement.previousSibling.innerText)} className=" order-last mt-12 ml-4 whitespace-nowrap rounded-md border border-transparent bg-cyan-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-cyan-700">Edit</button>
                         </div>
                         <div className='col-start-9 col-span-11'>
-                <button className=" order-last mt-12 ml-4 whitespace-nowrap rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700">Generate QR</button>
+                            <p className='sr-only' id='idList'>{ev._id}</p>
+                <button onClick={()=>handleGenerageQr(document.activeElement.previousSibling.innerText)} className=" order-last mt-12 ml-4 whitespace-nowrap rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700">Generate QR</button>
                         </div>
                     </div>
                 <p className='mt-8'></p>

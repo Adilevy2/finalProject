@@ -1,17 +1,27 @@
 import {useFormik} from 'formik'
 import { AllContext } from '../context/Context';
 import React, { useContext } from "react";
+import axios from 'axios';
 
 const Support = () => { 
     const formik=useFormik({
     initialValues:{
-        eventName:'',
-        password:''
+        body:'',
+        email:'',
+        name:''
     }
 });  
 const { setSupport} = useContext(AllContext);
-const handleCancleSupport=()=>{
-    setSupport(false);
+const handleSubmitSupport=async(ev)=>{
+    ev.preventDefault()
+    try{
+
+        const submit=await axios.post('http://localhost:4000/api/support',formik.values)
+        setSupport(false)
+    }
+    catch{
+        alert('oops sothing went wrong')
+    }
 }
     return ( 
         <div>
@@ -27,34 +37,34 @@ const handleCancleSupport=()=>{
                         <h1 className="text-2xl font-bold text-center text-white">Support</h1>
                             </div>
                             <div className='col-span-1'>
-                        <button onClick={()=>handleCancleSupport()} className='text-4xl text-center text-white'>-</button>
+                        <button onClick={()=>setSupport(false)} className='text-4xl text-center text-white'>-</button>
                             </div>
 
                         </div>
-                            <form>
+                            <form onSubmit={(ev)=>handleSubmitSupport(ev)}>
                                 
                             <div className="mx-4 mt-2 grid grid-cols-4 gap-6">
                             <div className="col-span-6 sm:col-span-4">
                             <label className="text-xl font-bold block text-sm font-medium text-gray-700">Your name</label>     
-                            <input className="h-8 mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1" type='text'></input>
+                            <input onChange={formik.handleChange} name="name" required className="h-8 mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1" type='text'></input>
                             </div>
                             <div className="col-span-6 sm:col-span-4">
                             <label className="text-xl font-bold block text-sm font-medium text-gray-700">email</label>     
-                            <input className="h-8 mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1" type='text'></input>
+                            <input onChange={formik.handleChange} required name="email" className="h-8 mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1" type='text'></input>
                             </div>
                             <div className="col-span-6 sm:col-span-4">
                             <label className="text-xl font-bold block text-sm font-medium text-gray-700">How can we help you?</label>     
-                            <textarea id="about" name="about" rows="4" className=" resize-none mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"></textarea>
+                            <textarea onChange={formik.handleChange} required id="about" name="body" rows="4" className=" resize-none mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"></textarea>
                             </div>
                             </div>
                                
+                    <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                       <button type="submit" className=" bg-indigo-600 text-slate-50 hover:bg-indigo-700 mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 px-4 py-2 text-base font-medium text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">send</button>
+                    </div>
                             </form>
                     </div>
                        
                     
-                    <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                       <button onClick={()=>handleCancleSupport()} type="button" className=" bg-indigo-600 text-slate-50 hover:bg-indigo-700 mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 px-4 py-2 text-base font-medium text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">send</button>
-                    </div>
                  </div>
               </div>
            </div>

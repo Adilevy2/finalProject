@@ -27,7 +27,7 @@
   
   .navbar {
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1fr 4fr;
     align-items: center;
     height: auto;
     overflow: hidden;
@@ -46,22 +46,25 @@
   .navbar ul {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(6,1fr);
+    gap: 1rem;
+    grid-template-columns: repeat(4,1fr);
     justify-self: end;
     justify-content: end;
     
   }
   
-  .nav-item a {
+  .nav-item  {
     color: #000;
+    
     font-size: 1rem;
     font-weight: 400;
     text-decoration: none;
     transition: color 0.3s ease-out;
   }
   
-  .nav-item a:hover {
-    color: rgb(63, 114, 175);
+  .nav-item:hover{
+    color: #1550bd;
+    cursor: pointer
   }
   
   .features {
@@ -179,7 +182,6 @@
     .navbar ul {
       display: flex;
       flex-direction: column;
-      position: fixed;
       justify-content: end;
       top: 3.438rem;
       background-color: rgb(168, 166, 166);
@@ -192,6 +194,7 @@
     
     .navbar li {
       padding: 0.938rem;
+      
 
     }
     

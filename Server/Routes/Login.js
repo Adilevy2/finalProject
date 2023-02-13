@@ -1,4 +1,4 @@
-const {Users,validateUsers}=require('../Models/Users');
+const {Users}=require('../Models/Users');
 const express=require('express');
 const router=express.Router();
 const bcrypt=require('bcrypt');

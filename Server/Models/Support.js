@@ -1,7 +1,6 @@
-const { string } = require('joi');
 const mongoose = require('mongoose')
 
-const todoSchema = new mongoose.Schema({
+const supportSchema = new mongoose.Schema({
     body:{
         type:String,
         required:true
@@ -10,15 +9,12 @@ const todoSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    listName: {
+    name:{
         type:String,
         required:true
-    },
-    
-   
-   
+    }
   });
 
-const Todo = mongoose.model('Todo', todoSchema);
+const Support = mongoose.model('Support', supportSchema);
 
-module.exports = Todo
+module.exports = Support

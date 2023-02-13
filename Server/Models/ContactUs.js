@@ -1,8 +1,7 @@
-const { string } = require('joi');
 const mongoose = require('mongoose')
 
-const todoSchema = new mongoose.Schema({
-    body:{
+const contactSchema = new mongoose.Schema({
+    message:{
         type:String,
         required:true
     },
@@ -10,15 +9,12 @@ const todoSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    listName: {
+    name:{
         type:String,
         required:true
-    },
-    
-   
-   
+    }
   });
 
-const Todo = mongoose.model('Todo', todoSchema);
+const Contact = mongoose.model('Contact', contactSchema);
 
-module.exports = Todo
+module.exports = Contact

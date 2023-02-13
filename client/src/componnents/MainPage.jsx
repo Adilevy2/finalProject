@@ -45,8 +45,8 @@ const MainPage = () => {
          <div className='fixed bottom-16 z-10 mr-auto right-5'>
       {!support?
       <div>
-         <button onClick={()=>setSupport(true)} className='transition duration-700 ease-in-out w-28 h-12 whitespace-nowrap rounded-full border border-transparent bg-indigo-800 text-base font-medium text-white shadow-sm hover:bg-indigo-900'>
-            <div className='grid grid-cols-8'>
+         <button onClick={()=>setSupport(true)} className='cursor-help transition duration-700 ease-in-out w-28 h-12 whitespace-nowrap rounded-full border border-transparent bg-indigo-800 text-base font-medium text-white shadow-sm hover:bg-indigo-900'>
+            <div className=' grid grid-cols-8'>
                <div className='col-span-3 ml-2'>
                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z" />
@@ -76,8 +76,7 @@ const MainPage = () => {
                 is today an the market{" "}
               </p>
             </div>
-            <button className="b1">contact us</button>
-            <button className="b1">let's start</button>
+          
           </div>
           <div className="rigth">
             <img src={QR} className="QR" />
@@ -236,33 +235,33 @@ const MainPage = () => {
       <img src={QR} className="middle_img" />
       <div className="middle">
         <p className="middle_head font-bold">QR useage advantages</p>
-        <ol>
-          <li className="middle_list">
-            1. Easy Access to Information: QR codes allow users to quickly
+        <ol className="list-disc">
+          <li className="middle_list font-bold">
+             Easy Access to Information: QR codes allow users to quickly
             access information about your company and its products/services
             through their smartphone cameras.
           </li>
-          <li className="middle_list">
-            2. Increased Engagement: QR codes can increase engagement with your
+          <li className="middle_list font-bold">
+             Increased Engagement: QR codes can increase engagement with your
             advertisements, as customers can easily access more information
             about your company and what you have to offer.
           </li>
-          <li className="middle_list">
-            3. Measurable Results: QR codes can be tracked, allowing you to
+          <li className="middle_list font-bold">
+             Measurable Results: QR codes can be tracked, allowing you to
             measure the success of your advertising campaign and make
             adjustments accordingly.
           </li>
-          <li className="middle_list">
-            4. Cost-Effective: QR codes are cost-effective, as they do not
+          <li className="middle_list font-bold">
+             Cost-Effective: QR codes are cost-effective, as they do not
             require printing costs for traditional advertisements, and the
             technology to use them is widely available.
           </li>
-          <li className="middle_list">
-            5. Versatility: QR codes can be used in a variety of media, such as
+          <li className="middle_list font-bold">
+             Versatility: QR codes can be used in a variety of media, such as
             print advertisements, billboards, packaging, and more.
           </li>
-          <li className="middle_list">
-            6. Increased Reach: QR codes can reach a wider audience, as they can
+          <li className="middle_list font-bold">
+             Increased Reach: QR codes can reach a wider audience, as they can
             be accessed by anyone with a smartphone.
           </li>
         </ol>

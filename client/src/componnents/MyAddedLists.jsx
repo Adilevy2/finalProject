@@ -19,6 +19,7 @@ const MyAddedLists = () => {
         async function getData(){
             if(localStorage.getItem('token')){
                 decode=jwtDecode(localStorage.getItem('token'))
+                console.log(decode)
            }
            else{
                navigate('/')
@@ -33,6 +34,7 @@ const MyAddedLists = () => {
         setAreYouSureDeleteMyLists(true)
         setListId(listId);    
      }
+     console.log(data)
     return (
         <div style={{minHeight: '34rem'}} className='bg-slate-100'>
             {areYouSureDeleteMyLists &&
@@ -40,17 +42,17 @@ const MyAddedLists = () => {
             }
           
 
-              <div className='absolute'>
+              <div className='fixed'>
             <SideBar/>
             </div>
         <div className='grid place-items-center '>
             <h1 className='text-center text-4xl font-bold mt-6'>My Added Lists</h1>
             
-            {data.length==0?<h1 className='text-center text-4xl font-bold mt-24 text-red-500'>You havn't added any lists yet to your personal area</h1>:data.map(ev=>ev=<div key={ev._id} className=' mt-8 bg-slate-200 w-5/12  rounded-md border border-2 border-gray-400 drop-shadow-xl hover:drop-shadow-2xl hover:border-rose-800'>
+            {data.length==0?<h1 className='text-center text-4xl font-bold mt-24 text-red-500'>You havn't added any lists yet to your personal area</h1>:data.map(ev=>ev=<div style={{backgroundColor:`${ev.listBackgroundColor}`}} key={ev._id} className=' mt-8 bg-slate-200 w-5/12  rounded-md border border-2 border-gray-400 drop-shadow-xl hover:drop-shadow-2xl hover:border-rose-800'>
                 <h1 className='text-center text-2xl font-bold mt-6'>{ev.companyName}</h1>
-                <h1 className='text-center text-xl font-bold mt-8 underline underline-offset-1'>{ev.listName}</h1>
+                <h1 style={{fontFamily:`${ev.listFont}`,fontSize:`${ev.listFontSize}`}} className='text-center text-xl font-bold mt-8 underline underline-offset-1'>{ev.listName}</h1>
                 <div className='mt-8'>
-                {ev.content.map(e=><div className=' grid '>
+                {ev.content.map(e=><div style={{fontFamily:`${ev.listFont}`,color:`${ev.listFontColor}`,fontSize:`${ev.listFontSize}`}} className=' grid '>
                 <div className=' ml-8'>
                 <span class="flex items-center mt-2 font-bold " >{e.body}
                 </span>

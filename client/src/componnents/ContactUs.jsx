@@ -1,7 +1,10 @@
 import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field, ErrorMessage,useFormik } from 'formik';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const ContactUs = () => {
+ const navigate=useNavigate()
     return ( 
     <div className="bg-gray-200 p-6">
       <h1 className="text-3xl font-bold text-center">Contact Us</h1>
@@ -24,17 +27,15 @@ const ContactUs = () => {
           }
           return errors;
         }}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
+        onSubmit={async(values, { setSubmitting }) => {
+          const submit=await axios.post('http://localhost:4000/api/contactUs',values)
+          navigate('/')
         }}
       >
         {({ isSubmitting }) => (
           <Form className="mx-auto mt-6 p-6 bg-white shadow-lg">
             <div className="mb-4">
-              <label className="block font-bold mb-2" htmlFor="name">
+              <label className="block font-bold mb-2"   name="name">
                 Name
               </label>
               <Field
@@ -51,7 +52,7 @@ const ContactUs = () => {
               />
             </div>
             <div className="mb-4">
-              <label className="block font-bold mb-2" htmlFor="email">
+              <label className="block  font-bold mb-2" name="email">
                 Email
               </label>
               <Field
@@ -68,7 +69,7 @@ const ContactUs = () => {
               />
             </div>
             <div className="mb-4">
-              <label className="block font-bold mb-2" htmlFor="message">
+              <label className="block font-bold mb-2"  name="message">
                 Message
               </label>
               <Field

@@ -1,0 +1,113 @@
+
+.cookieBody {
+    background-image: url('https://www.smooth.com.au/wp-content/uploads/2022/10/cookie-monster-lead-via-sesame-street-insta.jpg')
+   fixed center/cover;
+  }
+  
+  
+  .foot {
+  cursor: url(https://www.geocaching.com/images/logtypes/2.png), default;
+  }
+  
+  .para:first-of-type::before {
+    content: "I";
+    font-size: 58px;
+    float: float;
+    padding: 0 10px;
+    margin: -8px 0 -20px 0;
+  }
+  
+  
+  .ankor:nth-of-type(3) {
+    position: relative;
+  }
+  
+  .ankor:nth-of-type(3):hover::before {
+    content: "";
+    background: white;
+    position: absolute;
+    bottom: 20px;
+    left: 35px;
+    border-radius: 100px;
+    padding: 7px;
+    border: black;
+  }
+  
+  .ankor:nth-of-type(3):hover::after {
+    content: "Enjoys cookies too! " url(https://tinyurl.com/jzchpmk);
+    font-size: 20px;
+    font-weight: bold;
+    background: white;
+    position: absolute;
+    bottom: 30px;
+    left: 50px;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid blue;
+    width: 190px;
+  }
+  
+  .header2 {
+    background: #35C0F2;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid blue;
+  }
+  
+
+  
+  .cookieLi:nth-of-type(even):hover {
+    color: orange
+  }
+  
+  .cookieTr:nth-child(2n+4):hover {
+    color: orange;
+  }
+  
+  .cookieTr:nth-child(2n+1):hover {
+    color: #35C0F2;
+  }
+  
+  
+  .ankor:hover {
+    color: black;
+    background: #35C0F2;
+  }
+  
+  .cookieAside {
+    background: rgba(0, 0, 0, 0.82);
+    width: 424px;
+    color: white;
+    padding: 15px;
+  }
+  
+  .cookieTh {
+    font-size: 24px;
+    color: #35C0F2;
+  }
+  
+  .cookieTd {
+    border: 1px solid #fff;
+  }
+  
+  .cookieTable {
+    margin: 0 auto;
+  }
+  
+  .cookieOl {
+    list-style: upper-alpha;
+  }
+  
+  .cookieButton {
+    background: black;
+    font-size: 10px;
+    padding: 1px;
+    float: right;
+  }
+  
+  .cookieButton:hover {
+    background: black;
+    color: white;
+  }
+  
+  

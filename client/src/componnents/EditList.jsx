@@ -2,10 +2,17 @@ import { useContext,useState } from 'react';
 import { AllContext } from '../context/Context';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
-
-
+import {useFormik} from 'formik';
 
 const EditList = () => { 
+  const formik=useFormik({
+    initialValues:{
+      listFont:'monospace',
+      listFontColor:'#000000',
+      listFontSize:'1rem',
+      listBackgroundColor:'#FFFFFF'
+    }
+});  
     
 const {listId,editList,setEditList,listName}=useContext(AllContext)
 
@@ -37,6 +44,16 @@ const handleDeleteList=async()=>{
 }
 
 const saveChanges=async()=>{
+  let listValues=formik.values;
+  listValues['id']=listId
+  console.log(listValues)
+  try{
+    const submitList=await axios.put(`http://localhost:4000/api/updateList`,listValues)
+  }
+  catch{
+    alert('oops,somthing went wrong')
+
+  }
     
     for(let i=0;i<inputs.length;i++){
         try{
@@ -50,6 +67,9 @@ const saveChanges=async()=>{
     setEditList(false)
     window.location.reload(false);
 }
+let listValues=formik.values;
+listValues['id']=listId
+console.log(listValues)
     return ( 
         <div>
             <div className="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -84,6 +104,30 @@ const saveChanges=async()=>{
       </div>
       <button onClick={()=>handleAddInput()} type="button" className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Add another line</button>
      
+      <div>
+                            <label>List Font - </label>
+                            <select onChange={formik.handleChange} name='listFont'>
+                              <option value='monospace'>mono</option>
+                              <option value='serif'>serif</option>
+                              <option value='sans-serif'>sans</option>
+                              <option value='fantasy'>fantasy</option>
+                              <option value='cursive'>cursive</option>
+                              <option value='fangsong'>fangsong</option>
+                            </select>
+                            <br/>
+                            <label>List Font Color - </label>
+                            <input onChange={formik.handleChange}  type="color"  name="listFontColor" />
+                            <br/>
+                            <label>List Background Color - </label>
+                            <input onChange={formik.handleChange} defaultValue='#FFFFFF' type="color"  name="listBackgroundColor" />
+                            <br/>
+                            <label>Font Size - </label>
+                            <select onChange={formik.handleChange} id='fontSize' name="listFontSize">
+                              <option value='1rem'>regular</option>
+                              <option value='1.3rem'>xl</option>
+                              <option value='1.5rem'>2xl</option>
+                            </select>
+                          </div>
     </form>
   </div>
           </div>

@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const AddList = () => {
   const [todo, setTodo] = useState([{ body: "" }]);
+  const [message, setMessage] = useState('');
   let navigate=useNavigate()
   let decode={};
   if(localStorage.getItem('token')){
@@ -19,6 +20,10 @@ else{
     try {
       e.preventDefault();
       const listName = e.target.elements.listName.value;
+      const listFont = e.target.elements.listFont.value;
+      const listFontColor = e.target.elements.listFontColor.value;
+      const listBackgroundColor = e.target.elements.listBackgroundColor.value;
+      const listFontSize = e.target.elements.listFontSize.value;
       for(let i=0;i<todo.length;i++){
         const body=todo[i].body
         const to = await axios.post("http://localhost:4000/api/todo", {
@@ -30,8 +35,14 @@ else{
      const submit=await axios.post("http://localhost:4000/api/addList", {
       listName:listName,
       companyName:campanyName,
-      email:email
+      email:email,
+      listFont:listFont,
+      listFontColor:listFontColor,
+      listFontSize:listFontSize,
+      listBackgroundColor:listBackgroundColor
     });
+    if(submit.data=='you allready have a list with this name')
+    return setMessage(<p className="font-medium text-red-500 hover:text-red-600">you allready have a list with this name</p>)
     navigate('/myLists')
     } catch {
       alert("oops, something went wrong");
@@ -56,7 +67,7 @@ else{
   };
   return (
     <div style={{minHeight: '34rem'}} className='bg-slate-100'>
-        <div className="absolute">
+        <div className="fixed">
         <SideBar/>
         </div>
         <div className="grid place-items-center">
@@ -92,9 +103,7 @@ else{
                           </div>
                           {todo.map((singaltodo,i) => (
                             <div key={i} className="grid md:grid-cols-2 ">
-                              <label htmlFor="Todo Name" className="sr-only">
-                                What ToDo?
-                              </label>
+                             
                               <input
                                 onChange={(event) => handleChange(i, event)}
                                 name="body"
@@ -113,6 +122,7 @@ else{
                                   &#10006;
                                 </button>
                               )}
+                                  
                             </div>
                           ))}
                         </div>
@@ -122,8 +132,42 @@ else{
                           >
                           Add Mission
                         </button>
-
+                          <div>
+                            <label>List Font - </label>
+                            <select name='listFont'>
+                              <option value='monospace'>mono</option>
+                              <option value='serif'>serif</option>
+                              <option value='sans-serif'>sans</option>
+                              <option value='fantasy'>fantasy</option>
+                              <option value='cursive'>cursive</option>
+                              <option value='fangsong'>fangsong</option>
+                            </select>
+                            <br/>
+                            <label>List Font Color - </label>
+                            <input type="color" defaultValue='#000000'  name="listFontColor" />
+                            <br/>
+                            <label>List Background Color - </label>
+                            <input type="color" defaultValue='#FFFFFF' name="listBackgroundColor" />
+                            <br/>
+                            <label>Font Size - </label>
+                            <select id='fontSize' name="listFontSize">
+                              <option value='1rem'>regular</option>
+                              <option value='1.3rem'>xl</option>
+                              <option value='1.5rem'>2xl</option>
+                            </select>
+                          </div>
                         <div className="grid">
+                                <div>
+            <input  id="company" class="mb-6 ml-6 peer/company" type="radio"  name="isCompany"  />
+            <label for="company" class="font-bold ml-2 peer-checked/company:text-sky-500">Public</label>
+
+            <input   id="personal" class="ml-48 peer/personal" type="radio"  name="isCompany" />
+            <label for="personal" class=" font-bold ml-2 peer-checked/personal:text-blue-700">Private</label>
+
+            <div class="hidden peer-checked/company:block">List Cannot be added by others but can be seen via QR code.</div>
+            <div class="hidden peer-checked/personal:block">Everybody can see and add your list.</div>
+        </div>
+                          <div className="mb-6">{message}</div>
                           <button
                             type="submit"
                             className="group relative flex w-full justify-center rounded-md border border-transparent bg-sky-600 py-2 px-4 text-sm font-medium text-white hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"

@@ -1,0 +1,7 @@
+#search_user{
+    transition-duration: 0.4s;
+    }
+  
+  #search_user:hover{
+  transform: scale(1.1);
+  }

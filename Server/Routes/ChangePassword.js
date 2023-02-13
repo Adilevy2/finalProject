@@ -16,10 +16,10 @@ router.put('/', async (req, res) => {
 
     // Check if the email exists
     if (!user) {
-      return res.status(404).send({ error: 'User not found' });
+      return res.send( 'User not found').status(400);
     }
 
-    const compare=await bcrypt.compare(req.body.prevPass,user.password)
+    const compare=await bcrypt.compare(prevPass,user.password)
     console.log(compare);
     if(compare==false)
          return res.send('invalid password').status(400)
@@ -28,10 +28,9 @@ router.put('/', async (req, res) => {
     const hash = await bcrypt.hash(password, 10);
     // Update the password
     await Users.findOneAndUpdate({ email }, { password: hash });
-    return res.status(200).send({ message: 'Password updated successfully' });}
+    return res.status(200).send( 'Password updated successfully' );}
   } catch (error) {
-    console.error(error);
-    return res.status(500).send({ error: 'Error updating password' });
+    return res.sendStatus( error );
   }
 });
 

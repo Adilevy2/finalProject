@@ -1,5 +1,6 @@
 import React from "react";
-import logo from "../images/logo-bg.png";
+import logo from "../images/logo-bg.png"; 
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -11,12 +12,17 @@ const Footer = () => {
             <p>Copyright © 2023. All rights reserved to QRcontrol</p>
           </div>
           <div>
+            <Link to='/termsAndCondiotions'>
             <p className="hover:scale-110 ease-in-out duration-300">Terms and Condtions</p>
-            <p className="hover:scale-110 ease-in-out duration-300">Pravicy Policy</p>
+            </Link>
+            <Link to='/privacyPolicy'>
+            <p className="hover:scale-110 ease-in-out duration-300">privacy Policy</p>
+            </Link>
+            <Link to='/cookiesPolicy'>
             <p className="hover:scale-110 ease-in-out duration-300">Cookie Policy</p>
+            </Link>
           </div>
           <div>
-            <p className="hover:scale-110 ease-in-out duration-300">let's chat</p>
             <p className="hover:scale-110 ease-in-out duration-300 mt-6">QRcontrol@gmail.com</p>
           </div>
           <div>

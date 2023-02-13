@@ -1,4 +1,4 @@
-const {Users,validateUsers}=require('../Models/Users');
+const {Users}=require('../Models/Users');
 const express=require('express');
 const router=express.Router();
 const bcrypt=require('bcrypt');
@@ -14,20 +14,19 @@ router.get('/',async(req,res)=>{
 
 //sighUp
 router.post('/',async(req,res)=>{
-    let {error}=validateUsers(req.body);
-    if(error)
-    return res.send(error.details[0].message).status(400)
-
+    try{
+   
     let users=await Users.findOne({email:req.body.email});
     if(users){
         return res.send('email exist').status(400)
     }
-    if(!users){
-        users=await new Users(req.body);
-        const salt =await bcrypt.genSalt(10);
-        users.password=await bcrypt.hash(users.password,salt);
+     users=await Users.findOne({name:req.body.name,isCompany:true});
+    if(users && req.body.isCompany==true){
+        return res.send('company name is taken').status(400)
     }
-    try{
+    users=await new Users(req.body);
+    const salt =await bcrypt.genSalt(10);
+    users.password=await bcrypt.hash(users.password,salt);
         users=await users.save();
         return res.send(users.generateToken()).status(200);
     }

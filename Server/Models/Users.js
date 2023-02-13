@@ -20,22 +20,21 @@ const schema=mongoose.Schema({
         type:Boolean,
         required:true
     },
+    phoneNumber:{
+        type:String,
+    },
+    adress:{
+        type:String,
+    },
+    
 });
 
 schema.methods.generateToken=function(){
-    const token=jwt.sign({email:this.email, name:this.name, password:this.password,isCompany:this.isCompany},'tokenWord')
+    const token=jwt.sign({email:this.email, name:this.name, password:this.password,isCompany:this.isCompany,phoneNumber:this.phoneNumber,adress:this.adress},'tokenWord')
     return token;
 }
 const Users=mongoose.model('users',schema);
 
-function validateUsers(user){
-    const schema=Joi.object({
-        name:Joi.string().required(),
-        email:Joi.string().required().email(), 
-        password:Joi.string().required(), 
-        isCompany:Joi.boolean().required(), 
-    });
-    return schema.validate(user)
-};
 
-module.exports={Users,validateUsers}
+
+module.exports={Users}

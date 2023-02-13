@@ -10,6 +10,8 @@ const SignUp = () => {
         email:'',
         name:'',
         password:'',
+        phoneNumber:'',
+        adress:'',
         isCompany:null
     }
 });  
@@ -22,10 +24,12 @@ const handleSubmit=async(e)=>{
         e.preventDefault()
         formik.values.isCompany=isCompany;
         if(isCompany==null)
-        setMessage(<p className="font-medium text-red-500 hover:text-red-600">Choose the account status</p>)
+        return setMessage(<p className="font-medium text-red-500 hover:text-red-600">Choose the account status</p>)
         const submit=await axios.post('http://localhost:4000/api/signUp',formik.values)
         if(submit.data=='email exist')
-        setMessage(<p className="font-medium text-red-500 hover:text-red-600">email exist</p>)
+        return setMessage(<p className="font-medium text-red-500 hover:text-red-600">email exist</p>)
+        if(submit.data=='company name is taken')
+         return setMessage(<p className="font-medium text-red-500 hover:text-red-600">company name is taken</p>)
         else{
             setModalOnSignUp(false)
             localStorage.setItem('token',submit.data)   
@@ -35,6 +39,7 @@ const handleSubmit=async(e)=>{
         alert('oops,somthing went wrong')
     }
 }
+console.log(formik.values)
     return ( 
         <div>
             <div className="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -67,6 +72,20 @@ const handleSubmit=async(e)=>{
           <label for="password" className="sr-only">Password</label>
           <input onChange={formik.handleChange} id="password" name="password" type="password" autocomplete="name" required className="relative block w-full appearance-none  rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm mt-4" placeholder="password"/>
         </div>
+        {
+          isCompany==true &&
+          <div>
+          <label for="phoneNumber" className="sr-only"> phoneNumber</label>
+          <input onChange={formik.handleChange}  name="phoneNumber" type="text" autocomplete="name" required className="relative block w-full appearance-none  rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm mt-4" placeholder="Business Phone Number"/>
+        </div>
+        }
+        {
+          isCompany==true &&
+          <div>
+          <label for="phoneNumber" className="sr-only">Business address</label>
+          <input onChange={formik.handleChange}  name="adress" type="text" autocomplete="name" required className="relative block w-full appearance-none  rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm mt-4" placeholder="business address"/>
+        </div>
+        }
         <div>
             <input onClick={()=>{setIsCompany(true)}} id="company" class="mt-6 ml-6 peer/company" type="radio"  name="isCompany"  />
             <label for="company" class="font-bold ml-2 peer-checked/company:text-sky-500">Company</label>

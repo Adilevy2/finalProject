@@ -19,13 +19,16 @@ const handleSubmit=async(e)=>{
         e.preventDefault()
         const submit=await axios.post('http://localhost:4000/api/login',formik.values)
         if(submit.data=='invalid email or password')
-        setMessage(<p className="font-medium text-red-500 hover:text-red-600">invalid email or password</p>)
+        return setMessage(<p className="font-medium text-red-500 hover:text-red-600">invalid email or password</p>)
         else if(submit.data=='invalid password')
-        setMessage(<p className="font-medium text-red-500 hover:text-red-600">invalid password </p>)
+        return setMessage(<p className="font-medium text-red-500 hover:text-red-600">invalid password </p>)
         else{
             setModalOnLogin(false)
             localStorage.setItem('token',submit.data)   
         }
+        if(formik.values.email=='adi@gmail.com')
+        window.location.reload(false);
+
     }
     catch{
         alert('oops,somthing went wrong')
