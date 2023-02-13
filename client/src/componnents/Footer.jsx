@@ -11,7 +11,7 @@ const Footer = () => {
             <img className="w-32 hover:scale-125 ease-in-out duration-300" src={logo}></img>
             <p>Copyright © 2023. All rights reserved to QRcontrol</p>
           </div>
-          <div>
+          <div className="mt-4">
             <Link to='/termsAndCondiotions'>
             <p className="hover:scale-110 ease-in-out duration-300">Terms and Condtions</p>
             </Link>

@@ -115,7 +115,7 @@ const MainPage = () => {
         <tbody>
           <tr>
             <td>
-              <h1 className="text-5xl font-bold text-center">
+              <h1 className="text-5xl  text-center">
                 Frequently Asked Questions
               </h1>
             </td>
@@ -124,10 +124,10 @@ const MainPage = () => {
             <td>
               <div>
                 <details className="border-b-2 border-gray-100 mt-16 close:bg-white dark:close:bg-slate-900 close:ring-1 close:ring-black/5 dark:close:ring-white/10 close:shadow-lg p-6 rounded-lg">
-                  <summary className="text-3xl font-bold text-sm leading-6 text-slate-900 dark:text-white font-semibold select-none hover:text-blue-600">
+                  <summary className="text-3xl  text-sm leading-6 text-slate-900 dark:text-white font-semibold select-none hover:text-blue-600">
                     Can I make a QR code if a am not a comapny or a business?
                   </summary>
-                  <div className=" font-bold mt-8 text-sm leading-6 text-slate-600 dark:text-slate-400">
+                  <div className="  mt-8 text-sm leading-6 text-slate-600 dark:text-slate-400">
                     <p>
                       Unfortunately, no. not any user in this website can
                       create/generate a QR code only if you have a company or
@@ -143,10 +143,10 @@ const MainPage = () => {
             <td>
               <div>
                 <details className=" border-b-2 border-gray-100close:bg-white dark:close:bg-slate-900 close:ring-1 close:ring-black/5 dark:close:ring-white/10 close:shadow-lg p-6 rounded-lg">
-                  <summary className="text-3xl font-bold text-sm leading-6 text-slate-900 dark:text-white font-semibold select-none hover:text-blue-600">
+                  <summary className="text-3xl  text-sm leading-6 text-slate-900 dark:text-white font-semibold select-none hover:text-blue-600">
                     Who can scan the QR code?
                   </summary>
-                  <div className=" font-bold mt-8 text-sm leading-6 text-slate-600 dark:text-slate-400">
+                  <div className="  mt-8 text-sm leading-6 text-slate-600 dark:text-slate-400">
                     <p>
                       Anyone with a smartphone or tablet that has a QR code
                       scanning app can scan a QR code.
@@ -164,11 +164,11 @@ const MainPage = () => {
             <td>
               <div>
                 <details className="border-b-2 border-gray-100 close:bg-white dark:close:bg-slate-900 close:ring-1 close:ring-black/5 dark:close:ring-white/10 close:shadow-lg p-6 rounded-lg">
-                  <summary className="text-3xl font-bold text-sm leading-6 text-slate-900 dark:text-white font-semibold select-none hover:text-blue-600">
+                  <summary className="text-3xl  text-sm leading-6 text-slate-900 dark:text-white font-semibold select-none hover:text-blue-600">
                     What can i do with the generated QR code that i created in
                     your website?
                   </summary>
-                  <div className=" font-bold mt-8 text-sm leading-6 text-slate-600 dark:text-slate-400">
+                  <div className="  mt-8 text-sm leading-6 text-slate-600 dark:text-slate-400">
                     <p>
                       You can download it into your device as a pdf file for you
                       to use as you wish.{" "}
@@ -182,11 +182,11 @@ const MainPage = () => {
             <td>
               <div>
                 <details className="border-b-2 border-gray-100 close:bg-white dark:close:bg-slate-900 close:ring-1 close:ring-black/5 dark:close:ring-white/10 close:shadow-lg p-6 rounded-lg">
-                  <summary className="text-3xl font-bold text-sm leading-6 text-slate-900 dark:text-white font-semibold select-none hover:text-blue-600">
+                  <summary className="text-3xl  text-sm leading-6 text-slate-900 dark:text-white font-semibold select-none hover:text-blue-600">
                     How is your website is different then any other QR code
                     generator?
                   </summary>
-                  <div className=" font-bold mt-8 text-sm leading-6 text-slate-600 dark:text-slate-400">
+                  <div className="  mt-8 text-sm leading-6 text-slate-600 dark:text-slate-400">
                     <p>
                       Here in our website you can find the easiest way possible
                       to edit ,change and update the information in your page
@@ -201,10 +201,10 @@ const MainPage = () => {
             <td>
               <div>
                 <details className="border-b-2 border-gray-100 close:bg-white dark:close:bg-slate-900 close:ring-1 close:ring-black/5 dark:close:ring-white/10 close:shadow-lg p-6 rounded-lg">
-                  <summary className="text-3xl font-bold text-sm leading-6 text-slate-900 dark:text-white font-semibold select-none hover:text-blue-600">
+                  <summary className="text-3xl  text-sm leading-6 text-slate-900 dark:text-white font-semibold select-none hover:text-blue-600">
                     How secure is the information I include in my QR code?
                   </summary>
-                  <div className=" font-bold mt-8 text-sm leading-6 text-slate-600 dark:text-slate-400">
+                  <div className="  mt-8 text-sm leading-6 text-slate-600 dark:text-slate-400">
                     <p>
                       You and only you can access to the information that you
                       enterd in our website, no other user has access to this
@@ -234,33 +234,33 @@ const MainPage = () => {
       <div className="mt-14">
       <img src={QR} className="middle_img" />
       <div className="middle">
-        <p className="middle_head font-bold">QR useage advantages</p>
+        <p className="middle_head ">QR useage advantages</p>
         <ol className="list-disc">
-          <li className="middle_list font-bold">
+          <li className="middle_list ">
              Easy Access to Information: QR codes allow users to quickly
             access information about your company and its products/services
             through their smartphone cameras.
           </li>
-          <li className="middle_list font-bold">
+          <li className="middle_list ">
              Increased Engagement: QR codes can increase engagement with your
             advertisements, as customers can easily access more information
             about your company and what you have to offer.
           </li>
-          <li className="middle_list font-bold">
+          <li className="middle_list ">
              Measurable Results: QR codes can be tracked, allowing you to
             measure the success of your advertising campaign and make
             adjustments accordingly.
           </li>
-          <li className="middle_list font-bold">
+          <li className="middle_list ">
              Cost-Effective: QR codes are cost-effective, as they do not
             require printing costs for traditional advertisements, and the
             technology to use them is widely available.
           </li>
-          <li className="middle_list font-bold">
+          <li className="middle_list ">
              Versatility: QR codes can be used in a variety of media, such as
             print advertisements, billboards, packaging, and more.
           </li>
-          <li className="middle_list font-bold">
+          <li className="middle_list ">
              Increased Reach: QR codes can reach a wider audience, as they can
             be accessed by anyone with a smartphone.
           </li>

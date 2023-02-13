@@ -85,7 +85,7 @@ console.log(listValues)
           
   <div className="w-full max-w-md space-y-8 ">
     <div >
-        <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900 font-sans">Edit List</h2>
+        <h2 className="mt-6 text-center text-3xl  tracking-tight text-gray-900 font-sans">Edit List</h2>
     </div>
     <form className="mt-8 space-y-6" >
       <input type="hidden" name="remember" value="true"/>
@@ -96,7 +96,7 @@ console.log(listValues)
           <div className='flex flex-nowrap' key={i}>
             <input onChange={(event) => handleChange(i, event)} value={input.body}  name="body" type="text" autocomplete="body" required className="relative block w-full  rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder='Add line'/>
           {i > 0 && (
-              <button onClick={() => handleRemoveInput(i)} type="button" className=" bg-red-400 mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">remove line</button>
+              <button onClick={() => handleRemoveInput(i)} type="button" className=" bg-red-400 mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">remove line</button>
              
           )}
         </div>
@@ -133,9 +133,9 @@ console.log(listValues)
           </div>
         </div>
         <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-          <button onClick={()=>setEditList(false)}  type="button" className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
-          <button onClick={()=>saveChanges()} type="button" className="mt-3 bg-green-300 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Save Changes</button>
-          <button onClick={()=>handleDeleteList()} type="button" className="mt-3 bg-red-300 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Delete List</button>
+          <button onClick={()=>setEditList(false)}  type="button" className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-black shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
+          <button onClick={()=>saveChanges()} type="button" className="mt-3 bg-green-300 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Save Changes</button>
+          <button onClick={()=>handleDeleteList()} type="button" className="mt-3 bg-red-300 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Delete List</button>
         </div>
       </div>
     </div>

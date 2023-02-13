@@ -71,19 +71,19 @@ const MyLists = () => {
             <SideBar/>
             </div>
         <div className='grid place-items-center '>
-            <h1 className='text-center text-4xl font-bold mt-6'>My Lists</h1>
+            <h1 className='text-center text-4xl  mt-6'>My Lists</h1>
             
-            {data.length==0?<h1 className='text-center text-4xl font-bold mt-24 text-red-500'>You dont have any lists yet</h1>:data.map(ev=>ev=<div style={{backgroundColor:`${ev.listBackgroundColor}`}} className=' mt-8 mb-6  w-5/12 rounded-md border border-2 border-gray-400 drop-shadow-xl hover:drop-shadow-2xl hover:border-blue-800'>
-                <h1 className='text-center text-2xl font-bold mt-6'>{ev.companyName}</h1>
-                <h1 style={{fontFamily:`${ev.listFont}`}} className='text-center text-xl font-bold mt-8 underline underline-offset-1'>{ev.listName}</h1>
+            {data.length==0?<h1 className='text-center text-4xl  mt-24 text-red-500'>You dont have any lists yet</h1>:data.map(ev=>ev=<div style={{backgroundColor:`${ev.listBackgroundColor}`}} className=' mt-8 mb-6  w-5/12 rounded-md border border-2 border-gray-400 drop-shadow-xl hover:drop-shadow-2xl hover:border-blue-800'>
+                <h1 className='text-center text-2xl  mt-6'>{ev.companyName}</h1>
+                <h1 style={{fontFamily:`${ev.listFont}`}} className='text-center text-xl  mt-8 underline underline-offset-1'>{ev.listName}</h1>
                 <div className='mt-8'>
                 {ev.content.map(e=><div style={{fontFamily:`${ev.listFont}`,fontSize:`${ev.listFontSize} ` }} className='hover:text-red-600 showhim grid '>
                 <div className='show1 ml-8'>
-                <span style={{color:`${ev.listFontColor}`}} class="flex items-center mt-2 font-bold " >{e.body}
+                <span style={{color:`${ev.listFontColor}`}} class="flex items-center mt-2  " >{e.body}
                 </span>
                 </div>
                 <div className='show2 ml-8'>
-                <span class="flex items-center mt-2 font-bold " >{e.body}
+                <span class="flex items-center mt-2  " >{e.body}
                 <svg onClick={()=>deleteTodo(e._id)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ml-20">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>

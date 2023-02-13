@@ -81,8 +81,8 @@ return (
         </button>
     </div>
     {user.length === 0 ?<p className="text-center mt-20 text-3xl">Company Not Found!</p>:(
-        <div className="justify-center flex mb-4">
-        <div className="mt-24 w-4/12 border-solid border-2 border-black shadow-black bg-slate-50 rounded-lg" id="search_user">
+        <div className="justify-center flex mb-4" id="search_user">
+        <div className="animation-fade-in-up mt-24 w-4/12 border-solid border-2 border-black shadow-black bg-slate-50 rounded-lg" >
             <div className="text-center m-2">
             <p className="text-5xl">{user.name}</p>
             <p className="mt-4 mb-4 text-2xl">Address : {user.adress}</p>

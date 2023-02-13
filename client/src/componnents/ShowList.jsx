@@ -80,14 +80,14 @@ const ShowList = () => {
          </div>
                         
             :<div style={{backgroundColor:`${data.listBackgroundColor}`}} key={data._id} className=' mt-8 bg-slate-200 w-5/12  rounded-md border border-2 border-gray-400 drop-shadow-xl hover:drop-shadow-2xl hover:border-green-800'>
-                <h1 className='text-center text-2xl font-bold mt-6'>{data.companyName}</h1>
-                <h1 style={{fontFamily:`${data.listFont}`,fontSize:`${data.listFontSize}`}} className='text-center text-xl font-bold mt-8 underline underline-offset-1'>{data.listName}</h1>
+                <h1 className='text-center text-2xl  mt-6'>{data.companyName}</h1>
+                <h1 style={{fontFamily:`${data.listFont}`,fontSize:`${data.listFontSize}`}} className='text-center text-xl  mt-8 underline underline-offset-1'>{data.listName}</h1>
                 <div className='mt-8'>
                     <ul className='list-disc'>
 
                 {data.content.map(e=><div style={{fontFamily:`${data.listFont}`,color:`${data.listFontColor}`,fontSize:`${data.listFontSize}`}} className=' grid '>
                 <li className=' ml-8'>
-                <span class="flex items-center mt-2 font-bold " >{e.body}
+                <span class="flex items-center mt-2  " >{e.body}
                 </span>
                 </li>
                     </div>)}

@@ -141,16 +141,10 @@
       border-radius: 1.5rem;
       color: rgb(0, 0, 0);
       box-shadow: 10px 10px 5px  rgb(90, 121, 132);
-      transition: width 2s, height 4s;
 
 
     }
-   .middle:hover{
-      width: 32rem;
-      background-color: rgb(50, 67, 86);
-      color: aliceblue;
-
-    }
+   
     
     .middle_img{
       /* margin-left: 28rem; */

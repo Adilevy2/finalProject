@@ -78,7 +78,7 @@ else{
                 <div className="sm:flex sm:items-start items-center justify-center">
                   <div className="w-full max-w-md space-y-8 ">
                     <div>
-                      <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900 font-sans">
+                      <h2 className="mt-6 text-center text-3xl  tracking-tight text-gray-900 font-sans">
                         Add List:
                       </h2>
                       <form
@@ -173,7 +173,7 @@ else{
                 </div>
               </div>
             </div>
-        :<h1 className="text-center text-4xl font-bold mt-24 text-red-500">Unfortunately only companys can publish a list:(</h1>}
+        :<h1 className="text-center text-4xl  mt-24 text-red-500">Unfortunately only companys can publish a list:(</h1>}
             </div>
             </div>
             </div>
