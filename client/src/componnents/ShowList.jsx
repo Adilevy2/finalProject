@@ -18,13 +18,21 @@ const ShowList = () => {
     let decode={};
     useEffect(() => {
         async function getData(){
-            if(localStorage.getItem('token')){
-                decode=jwtDecode(localStorage.getItem('token'))
-                setEmail(decode.email)
-           }
-          
-        const submit=await axios.post('https://qrcontrol-server.onrender.com/api/getOneList',{id:params.list})
-        setData(submit.data)}
+            try{
+
+                if(localStorage.getItem('token')){
+                    decode=jwtDecode(localStorage.getItem('token'))
+                    setEmail(decode.email)
+                }
+                
+                const submit=await axios.post('https://qrcontrol-server.onrender.com/api/getOneList',{id:params.list})
+                setData(submit.data)
+            }
+            catch{
+                alert('oops somthing went wrong')
+            }
+    
+    }
         getData()
     }, []);
 
