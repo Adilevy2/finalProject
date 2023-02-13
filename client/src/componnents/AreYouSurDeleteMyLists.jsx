@@ -8,7 +8,7 @@ const AreYouSureDeleteMyLists= () => {
     const handleDelete= async()=>{
         try{
             const decode=jwtDecode(localStorage.getItem('token'))
-            const submit=await axios.post(`http://localhost:4000/api/updateMyListClient`,{email:decode.email,id:listId})
+            const submit=await axios.post(`https://qrcontrol-server.onrender.com/api/updateMyListClient`,{email:decode.email,id:listId})
             setAreYouSureDeleteMyLists(false)
             window.location.reload(false);
         }

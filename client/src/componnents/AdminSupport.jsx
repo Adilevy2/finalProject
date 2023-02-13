@@ -17,7 +17,7 @@ const AdminSupport = () => {
       }
       if(!localStorage.getItem('token'))
       navigate('/')
-      const result = await axios.get("http://localhost:4000/api/support");
+      const result = await axios.get("https://qrcontrol-server.onrender.com/api/support");
       setContact(result.data);
     };
 
@@ -25,7 +25,7 @@ const AdminSupport = () => {
   }, []);
 
   const condelete = async (id) => {
-    await axios.delete(`http://localhost:4000/api/support/${id}`);
+    await axios.delete(`https://qrcontrol-server.onrender.com/api/support/${id}`);
     setContact(contact.filter((con) => con._id !== id));
   };
 

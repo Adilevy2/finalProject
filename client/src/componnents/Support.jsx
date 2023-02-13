@@ -16,7 +16,7 @@ const handleSubmitSupport=async(ev)=>{
     ev.preventDefault()
     try{
 
-        const submit=await axios.post('http://localhost:4000/api/support',formik.values)
+        const submit=await axios.post('https://qrcontrol-server.onrender.com/api/support',formik.values)
         setSupport(false)
     }
     catch{

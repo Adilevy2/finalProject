@@ -25,7 +25,7 @@ const handleSubmit=async(e)=>{
         formik.values.isCompany=isCompany;
         if(isCompany==null)
         return setMessage(<p className="font-medium text-red-500 hover:text-red-600">Choose the account status</p>)
-        const submit=await axios.post('http://localhost:4000/api/signUp',formik.values)
+        const submit=await axios.post('https://qrcontrol-server.onrender.com/api/signUp',formik.values)
         if(submit.data=='email exist')
         return setMessage(<p className="font-medium text-red-500 hover:text-red-600">email exist</p>)
         if(submit.data=='company name is taken')

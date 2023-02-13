@@ -20,7 +20,7 @@ const handleSubmit=async()=>{
       }
       let values=formik.values;
       values['email']=decode.email;
-      const submit=await axios.put('http://localhost:4000/api/changeDetails',values)
+      const submit=await axios.put('https://qrcontrol-server.onrender.com/api/changeDetails',values)
       localStorage.setItem('token',submit.data)   
       setChangePhoneNumber(false)
       window.location.reload(false);

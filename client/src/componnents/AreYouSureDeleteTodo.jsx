@@ -6,7 +6,7 @@ const AreYouSureDeleteTodo= () => {
     const {areYouSureDeleteTodo,setAreYouSureDeleteTodo,todoId}=useContext(AllContext)
     const handleDelete= async()=>{
         try{
-            const submit=await axios.delete(`http://localhost:4000/api/deleteTodo/${todoId}`)
+            const submit=await axios.delete(`https://qrcontrol-server.onrender.com/api/deleteTodo/${todoId}`)
             setAreYouSureDeleteTodo(false)
             window.location.reload(false);
         }

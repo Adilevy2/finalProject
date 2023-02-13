@@ -26,13 +26,13 @@ else{
       const listFontSize = e.target.elements.listFontSize.value;
       for(let i=0;i<todo.length;i++){
         const body=todo[i].body
-        const to = await axios.post("http://localhost:4000/api/todo", {
+        const to = await axios.post("https://qrcontrol-server.onrender.com/api/todo", {
           listName:listName,
           body:body,
           email:email
         });
       }
-     const submit=await axios.post("http://localhost:4000/api/addList", {
+     const submit=await axios.post("https://qrcontrol-server.onrender.com/api/addList", {
       listName:listName,
       companyName:campanyName,
       email:email,
@@ -157,16 +157,7 @@ else{
                             </select>
                           </div>
                         <div className="grid">
-                                <div>
-            <input  id="company" class="mb-6 ml-6 peer/company" type="radio"  name="isCompany"  />
-            <label for="company" class="font-bold ml-2 peer-checked/company:text-sky-500">Public</label>
-
-            <input   id="personal" class="ml-48 peer/personal" type="radio"  name="isCompany" />
-            <label for="personal" class=" font-bold ml-2 peer-checked/personal:text-blue-700">Private</label>
-
-            <div class="hidden peer-checked/company:block">List Cannot be added by others but can be seen via QR code.</div>
-            <div class="hidden peer-checked/personal:block">Everybody can see and add your list.</div>
-        </div>
+                             
                           <div className="mb-6">{message}</div>
                           <button
                             type="submit"

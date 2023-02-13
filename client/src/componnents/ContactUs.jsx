@@ -28,7 +28,7 @@ const ContactUs = () => {
           return errors;
         }}
         onSubmit={async(values, { setSubmitting }) => {
-          const submit=await axios.post('http://localhost:4000/api/contactUs',values)
+          const submit=await axios.post('https://qrcontrol-server.onrender.com/api/contactUs',values)
           navigate('/')
         }}
       >

@@ -35,7 +35,7 @@ const handleRemoveInput = (i) => {
 };
 const handleDeleteList=async()=>{
     try{
-        const submit=await axios.delete(`http://localhost:4000/api/deleteList/${listId}`)
+        const submit=await axios.delete(`https://qrcontrol-server.onrender.com/api/deleteList/${listId}`)
             window.location.reload(false);
     }
     catch{
@@ -48,7 +48,7 @@ const saveChanges=async()=>{
   listValues['id']=listId
   console.log(listValues)
   try{
-    const submitList=await axios.put(`http://localhost:4000/api/updateList`,listValues)
+    const submitList=await axios.put(`https://qrcontrol-server.onrender.com/api/updateList`,listValues)
   }
   catch{
     alert('oops,somthing went wrong')
@@ -58,7 +58,7 @@ const saveChanges=async()=>{
     for(let i=0;i<inputs.length;i++){
         try{
             const decode=jwtDecode(localStorage.getItem('token'))
-             const submitValues=await axios.post(`http://localhost:4000/api/todo`,{email:decode.email,listName:listName,body:inputs[i].body})
+             const submitValues=await axios.post(`https://qrcontrol-server.onrender.com/api/todo`,{email:decode.email,listName:listName,body:inputs[i].body})
         }
         catch{
             alert('oops,somthing went wrong')

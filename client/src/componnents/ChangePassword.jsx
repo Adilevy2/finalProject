@@ -28,7 +28,7 @@ const handleSubmit=async(e)=>{
         }
         let values=formik.values;
         values['email']=email;
-        const submit=await axios.put('http://localhost:4000/api/changePassword',values)
+        const submit=await axios.put('https://qrcontrol-server.onrender.com/api/changePassword',values)
         if(submit.data=='invalid password')
         return setMessage(<p className="font-medium text-red-500 hover:text-red-600">invalid  password</p>)
         else{

@@ -26,7 +26,7 @@ const MyLists = () => {
            else{
                navigate('/')
            }
-        const submit=await axios.post('http://localhost:4000/api/getList',{email:decode.email})
+        const submit=await axios.post('https://qrcontrol-server.onrender.com/api/getList',{email:decode.email})
         setData(submit.data)}
         getData()
     }, []);
@@ -47,7 +47,7 @@ const MyLists = () => {
 
     }
     const handleGenerageQr=(val)=>{
-        const url=`http://localhost:3000/list/${val}`
+        const url=`https://qrcontrol-server.onrender.com/list/${val}`
         setUrl(url);
         setQrGenerate(true)
     }

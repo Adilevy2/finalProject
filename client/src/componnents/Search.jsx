@@ -14,7 +14,7 @@ const [hidden, setHidden] = useState(true);
 const searchUser = async () => {
     try {
     const response = await axios.get(
-        `http://localhost:4000/api/users/${name}`
+        `https://qrcontrol-server.onrender.com/api/users/${name}`
     );
     setUser(response.data);
     setHidden(false);
@@ -29,7 +29,7 @@ const showLists=(val)=>{
     setCompanyLists(true)
 }
 return (
-    <div style={{minHeight:'32rem'}}>
+    <div style={{minHeight:'45rem'}} className='ALLSEARCH'>
         {
             companyLists &&
             <CompanyLists/>
@@ -48,12 +48,12 @@ return (
         }
         <div className="flex justify-center">
     <div  className="text-center mt-16 text-3xl w-2/4">
-        <p className="bg-blue-200 rounded-lg shadow-black">Hello, Here you can search for a compeny name <br /> and get all the information that you need!</p>
+        <p className=" rounded-lg shadow-black">Hello, Here you can search for a compeny name <br /> and get all the information that you need!</p>
     </div>
         </div>
-    <div className="justify-center flex mt-12 w-full">
+    <div className="justify-center flex mt-12 w-full ">
         <input
-        className="w-2/4 h-8 border-solid border-2 border-black "
+        className="w-2/4 h-8 border-solid border-2 border-black rounded-lg"
         type="text"
         placeholder="Type Here The Company Name"
         value={name}
@@ -82,7 +82,7 @@ return (
     </div>
     {user.length === 0 ?<p className="text-center mt-20 text-3xl">Company Not Found!</p>:(
         <div className="justify-center flex mb-4">
-        <div className="mt-24 w-4/12 border-solid border-2 border-black shadow-black" id="search_user">
+        <div className="mt-24 w-4/12 border-solid border-2 border-black shadow-black bg-slate-50 rounded-lg" id="search_user">
             <div className="text-center m-2">
             <p className="text-5xl">{user.name}</p>
             <p className="mt-4 mb-4 text-2xl">Address : {user.adress}</p>

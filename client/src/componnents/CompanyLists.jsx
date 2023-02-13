@@ -26,7 +26,7 @@ const CompanyLists= () => {
              setNeedToLogin(true)
            return setCompanyLists(false)
         }
-        const add=await axios.post('http://localhost:4000/api/addMyListClient',{email:email,id:val})
+        const add=await axios.post('https://qrcontrol-server.onrender.com/api/addMyListClient',{email:email,id:val})
         if(add.data=='you allready added this list'){
             setListAllreadyAdded(true)
             setCompanyLists(false)

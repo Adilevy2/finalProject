@@ -17,7 +17,7 @@ const {modalOnSignUp,setModalOnSignUp,modalOnLogin,setModalOnLogin}=useContext(A
 const handleSubmit=async(e)=>{
     try{
         e.preventDefault()
-        const submit=await axios.post('http://localhost:4000/api/login',formik.values)
+        const submit=await axios.post('https://qrcontrol-server.onrender.com/api/login',formik.values)
         if(submit.data=='invalid email or password')
         return setMessage(<p className="font-medium text-red-500 hover:text-red-600">invalid email or password</p>)
         else if(submit.data=='invalid password')

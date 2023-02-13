@@ -14,7 +14,7 @@ const {setEditTask,todoId}=useContext(AllContext)
 
 const handleSubmit=async()=>{
     try{
-        const submit=await axios.put('http://localhost:4000/api/updateTodo',{id:todoId,body:formik.values.body})
+        const submit=await axios.put('https://qrcontrol-server.onrender.com/api/updateTodo',{id:todoId,body:formik.values.body})
             setEditTask(false)        
             window.location.reload(false);
     }

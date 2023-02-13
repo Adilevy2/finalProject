@@ -23,7 +23,7 @@ const ShowList = () => {
                 setEmail(decode.email)
            }
           
-        const submit=await axios.post('http://localhost:4000/api/getOneList',{id:params.list})
+        const submit=await axios.post('https://qrcontrol-server.onrender.com/api/getOneList',{id:params.list})
         setData(submit.data)}
         getData()
     }, []);
@@ -32,14 +32,12 @@ const ShowList = () => {
     const addList= async()=>{
         if(!localStorage.getItem('token'))
          return setNeedToLogin(true)
-        const add=await axios.post('http://localhost:4000/api/addMyListClient',{email:email,id:params.list})
+        const add=await axios.post('https://qrcontrol-server.onrender.com/api/addMyListClient',{email:email,id:params.list})
         if(add.data=='you allready added this list')
         setListAllreadyAdded(true)
         else
         setListAdded(true)
-        console.log(add.data);
     } 
-    console.log(data);
     return (
         <div>
             {
