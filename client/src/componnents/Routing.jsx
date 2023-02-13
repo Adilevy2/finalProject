@@ -28,11 +28,11 @@ const Routing = () => {
                 <Route path='/contactUs' element={<ContactUs/>}></Route>
                 <Route path='/myAddedLists' element={<MyAddedLists/>}></Route>
                 <Route path='/addList' element={<AddList/>}></Route>
-                <Route path='/blala' element={<CookiesPolicy/>}></Route>
+                <Route path='/list/:list' element={<ShowList/>}></Route>
                 <Route path='/adminContactUs' element={<AdminContactUs/>}></Route>
                 <Route path='/adminSupport' element={<AdminSupport/>}></Route>
                 <Route path='/search' element={<Search/>}></Route>
-                {/* <Route path='/cookiesPolicy' element={<CookiesPolicy/>}></Route> */}
+                <Route path='/cookiesPolicy' element={<CookiesPolicy/>}></Route>
             </Routes>
             <Footer/>
         </div>
