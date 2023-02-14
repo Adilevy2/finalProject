@@ -8,7 +8,7 @@ router.post('/',async (req, res)=>{
 
         const list= await ClientLists.find({email:req.body.email});
         if(list.length==0)
-        return res.status(400).send('you have no lists')
+        return res.send('you have no lists')
         const listsId=list[0].content;
         let arr=[];
         for(let i=0;i<listsId.length;i++){
@@ -16,10 +16,9 @@ router.post('/',async (req, res)=>{
             arr=[...arr,result]
         }
         return res.send(arr)
-        return res.send(arr)
     }
     catch(error){
-        res.sendStatus(error)
+       return res.sendStatus(error)
     }
 });
 

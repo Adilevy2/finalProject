@@ -19,13 +19,14 @@ const MyAddedLists = () => {
             try{
             if(localStorage.getItem('token')){
                 decode=jwtDecode(localStorage.getItem('token'))
+                const submit=await axios.post('https://qrcontrol-server.onrender.com/api/myListClient',{email:decode.email})
+                console.log(submit)
+                setData(submit.data)
            }
            else{
                navigate('/')
            }
 
-               const submit=await axios.post('https://qrcontrol-server.onrender.com/api/myListClient',{email:decode.email})
-               setData(submit.data)
             }
             catch{
                alert('oops somthing went wrong') 
